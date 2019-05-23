@@ -6,6 +6,10 @@ h4 {
     margin: 1em;
 }
 
+.centered {
+    text-align: center
+}
+
 #content > form {
     text-align: center;
 }
