@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ReadGoods</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h3>Welcome to ReadGoods!</h3>
+    
+    <div id="content">
+        <form v-on:submit.prevent="searchBooks">
+            <input type="text" v-model="searchField" placeholder="Search">
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="row">
+            <div class="col">
+                <div v-if="loading">
+                    <p>Loading...</p>
+                </div>
+
+                <div v-else-if="loaded">
+                <h4>Results:</h4>
+
+                <div v-for="(book, index) in bookList">
+                    <hr>
+                    <img v-bind:src="book[0]" alt="No Cover Available">
+                    <div v-for="info in book[1]">
+                        <p>{{ info }}</p>
+                    </div>
+                    <button v-on:click="addToFavorites(index)">Favorite</button>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-sm-auto">
+                <h4>Favorites:</h4>
+
+                <div v-for="(book, index) in favorites">
+                    <hr>
+                    <img v-bind:src="book[0]" alt="No Cover Available">
+                    <div v-for="info in book[1]">
+                        <p>{{ info }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
