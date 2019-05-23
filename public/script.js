@@ -91,7 +91,11 @@ let app = new Vue({
 
         addToFavorites(index) {
             this.favorites.push(this.bookList[index]);
-        }
+        },
+
+        removeFromFavorites(index) {
+            this.favorites.splice(index, 1);
+        },
     },
 
 });

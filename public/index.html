@@ -48,6 +48,8 @@
                     <div v-for="info in book[1]">
                         <p>{{ info }}</p>
                     </div>
+                    <button v-on:click="removeFromFavorites(index)">Unfavorite</button>
+                </div>
                 </div>
 
             </div>
